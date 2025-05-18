@@ -12,7 +12,7 @@ export default defineConfig({
         short_name:'MedicGroup',
         description:'App de Obra social',
         theme_color:'#fffff',
-        background_color:'#fffff',
+        background_color: "#ffffff",
         display:'standalone',
         icons: [
           {
