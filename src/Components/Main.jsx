@@ -5,7 +5,7 @@ import { closeSesion, getData, cambioDeToken, cancelTurno } from '../firebase/au
 
 import './main.css';
 import './showTurnos.css'
-const Main = ({myUser, dni, setDni}) => {
+const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
 
   //console.log(myUser)
  
@@ -17,7 +17,7 @@ const Main = ({myUser, dni, setDni}) => {
   const [ token, setToken ] = useState(null);
   const [ turnos, setTurnos ] = useState(null);
   const [ isTurnos, setIsTurnos ] = useState(false);
-  const [ isInfo, setIsInfo ] = useState(false);
+  
 
   const [hover, setHover] = useState(false);
 
@@ -206,7 +206,7 @@ const Main = ({myUser, dni, setDni}) => {
         { isLoader && <Loader /> }        
         { !dni && <ShowInput /> }
         { isTurnos && <ShowTurnos /> }
-        { isInfo &&  <ShowInfo />  } 
+        { isInfo ?  <ShowInfo /> : ''  } 
       </main>
       <footer>
         <p>MedicGroup App - 2025</p>

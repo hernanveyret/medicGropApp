@@ -24,6 +24,7 @@ function App() {
   const [ mainMenu, setMainMenu ] = useState(false);
   const [ myUser, setMyUser ] = useState(null);
   const [ noUser, setNoUser ] = useState(false);
+  const [ isInfo, setIsInfo ] = useState(false);
 
   useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (user) => {
@@ -35,16 +36,15 @@ function App() {
         setCreateAccount(false);
         setLoginWithEmail(false);
         setMyUser(user)
-      } else if(user === null ) {
-        console.log('no existe el usuario')}
+      } 
         else {
-
         console.log('No estas logeado.');
         console.log(user)
         setInitApp(true);
         setLogin(false);
         setMainMenu(false);
-        setNoUser(false)        
+        setNoUser(false)
+        setIsInfo(false)
       }
     });
     return () => unsuscribe();
@@ -82,7 +82,9 @@ function App() {
       { mainMenu && <Main 
         myUser={myUser}
         dni={dni}  
-        setDni={setDni}      
+        setDni={setDni}
+        isInfo={isInfo}
+        setIsInfo={setIsInfo}   
         /> 
       }
     </div>

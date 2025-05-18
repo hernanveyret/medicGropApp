@@ -6,7 +6,7 @@ const Inicio = ({setInitApp, setLogin, createEmail, setCreateAccount}) => {
 return (
   <div className="container-form">
     < header className="header-form">
-      <h1>MediGroup</h1>
+      <h1>MedicGroup</h1>
       <h2>App</h2>
     </header>
       <div className="container-buttons">
