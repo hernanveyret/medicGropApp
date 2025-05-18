@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loader from './Loader.jsx';
-
 import { closeSesion, getData, cambioDeToken, cancelTurno } from '../firebase/auth.js';
-
 import './main.css';
 import './showTurnos.css'
 const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
@@ -198,7 +196,16 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
     <section className="container-main">
       < header className="header-main">
         <h1>{ user ? `¡Hola, ${user.nombre}!` : '¡Hola! '}</h1>
-        <button onClick={closeSesion}>Salir</button>
+        <button onClick={closeSesion} className="btn-salir">Salir</button>
+        <button className="btn-menu">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+          height="24px" 
+          viewBox="0 -960 960 960" 
+          width="24px" 
+          fill="white">
+            <path d="M148.08-261.08v-55.96h663.84v55.96H148.08Zm0-191.34v-55.96h663.84v55.96H148.08Zm0-191.35v-55.96h663.84v55.96H148.08Z"/>
+          </svg>
+          </button>
       </header>
       <main> 
         { isLoader && <Loader /> }        

@@ -22,17 +22,25 @@ main {
  justify-content: center;
  align-items: center; 
 }
-.header-main button {
+.btn-salir {
   padding: 5px;
   border: none;
   position: fixed;
   right: 1rem;
   transition: .2s ease-in-out;
 }
-.header-main button:hover {
+.btn-salir:hover {
   background-color: #00695c;
   color: white;
   border: 1px solid white;
+}
+.btn-menu {
+  padding: 5px;
+  border: none;
+  position: fixed;
+  left: 1rem;
+  background: none;;
+  transition: .2s ease-in-out;
 }
 .container-dni {
   background-color: white;
@@ -123,6 +131,7 @@ footer {
   color: white;
   text-align: center;
 }
+
 /* monitor */
 @media screen and ( min-width: 37em) {
   .container-dni {
