@@ -1,0 +1,77 @@
+.container-create-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* fondo gris muy claro */
+  
+}
+
+.form-create-account {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  position: relative;
+}
+.btn-back {
+  width: 30px;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.form-create-account input[type="email"],
+.form-create-account input[type="text"],
+.form-create-account input[type="password"] {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #bbb;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 1rem;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.form-create-account input[type="password"],
+.form-create-account input[type="text"] {
+  width: 85%;
+}
+.form-create-account input[type="email"]:focus,
+.form-create-account input[type="text"],
+.form-create-account input[type="password"]:focus {
+  border-color: #4CAF50;
+  background-color: #fff;
+  outline: none;
+}
+
+.form-create-account input[type="submit"] {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-create-account input[type="submit"]:hover {
+  background-color: #00695c;
+  color: white;
+}
+.contaner-buttons {
+  display: flex;
+  width: 100%;
+  gap: .5rem;
+}
+.visibility {
+  border: none;
+  background: none;
+}

@@ -1,0 +1,138 @@
+.container-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f9f4 ;
+}
+main {
+  max-width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header-main{
+ width: 100%;
+ height: 100px;
+  background-color: #00695c;
+ color: white;
+ display: flex;
+ justify-content: center;
+ align-items: center; 
+}
+.header-main button {
+  padding: 5px;
+  border: none;
+  position: fixed;
+  right: 1rem;
+  transition: .2s ease-in-out;
+}
+.header-main button:hover {
+  background-color: #00695c;
+  color: white;
+  border: 1px solid white;
+}
+.container-dni {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0 , 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 10rem;
+  margin-top: 2rem;
+}
+.container-dni input {
+  width: 80%;
+  padding: .7rem;
+  border: none;
+  margin-top: .5rem;
+  border-radius: .5rem;
+  background-color: rgb(235, 232, 232);
+  /*background-color: #f4f9f4;*/
+  outline: none;
+}
+.container-dni form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;    
+}
+
+.container-dni input[type="submit"] {
+  transition: .2s ease-in-out;
+}
+
+.container-dni input[type="submit"], .btn:hover  {
+  background-color: #00695c;
+  color: white;
+}
+
+.container-info {
+  width: 90%;
+  flex: 1;
+  position: relative;
+  background-color: white;
+  margin: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0 , 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-section-info {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+.btn {
+  padding: .8rem;
+  border: none;
+  border-radius: 5px;
+  width: 90%;
+  transition: .2s ease-in-out;
+}
+.fotoPerfil {
+  position: absolute;
+  top: -50px;
+  left: 40%;
+  width: 80px;
+  height: 80px;
+  border: 2px solid green;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px black;
+}
+.fotoPerfil  img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 0 50%;
+}
+
+footer {
+  background-color: #00695c;
+  color: white;
+  text-align: center;
+}
+/* monitor */
+@media screen and ( min-width: 37em) {
+  .container-dni {
+    width: 20%;
+  }
+  .container-info {
+    width: 50%;
+  }
+}
+
+.hidden {
+  display: none;
+}
