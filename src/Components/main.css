@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f4f9f4 ;
+  /*background-color: #f4f9f4 ;*/
+  background: linear-gradient(#016459 ,#01a895 );
 }
 main {
   max-width: 100%;
@@ -21,6 +22,7 @@ main {
  display: flex;
  justify-content: center;
  align-items: center; 
+ box-shadow: 0 0 4px black;
 }
 .btn-salir {
   padding: 5px;

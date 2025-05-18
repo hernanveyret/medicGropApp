@@ -16,10 +16,10 @@
   width: 100%;
 }
 h4{
-  color: #2e7d32;
+  color: white;
   text-align: center;
   font-family: 'roboto', sans-serif;
-  border-bottom: 2px solid #2e7d32;
+  border-bottom: 2px solid white;
 }
 
 .turno {
