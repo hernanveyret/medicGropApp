@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (user) => {
       if(user){
-        console.log('Estas logeado', user);        
+        //console.log('Estas logeado', user);        
         setInitApp(false);
         setLogin(false);
         setMainMenu(true);
@@ -38,8 +38,8 @@ function App() {
         setMyUser(user)
       } 
         else {
-        console.log('No estas logeado.');
-        console.log(user)
+        //console.log('No estas logeado.');
+        //console.log(user)
         setInitApp(true);
         setLogin(false);
         setMainMenu(false);

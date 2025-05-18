@@ -53,7 +53,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
       setIsInfo(true)
     }else{
       setUser(null);
-      console.log('no hay dni guardado')
+      //console.log('no hay dni guardado')
     }
   }, [dataBase, dni]);  
 
@@ -92,9 +92,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
     }
   },[user])
 
-  useEffect(() => {
-    console.log(turnos)
-  },[turnos])
+ 
 
   // Si no hay un dni valido, pide que se ingrese uno para ubicar al usuario.
   const ShowInput = () => {

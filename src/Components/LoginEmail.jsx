@@ -7,14 +7,31 @@ const LoginEmail = ({setInitApp, setLoginWithEmail, setLogin, noUser}) => {
   const [ email, setEmail ] = useState(null);
   const [ password, setPassWord ] = useState(null);
   const [ visibilityPassword, setVisibilityPassword ] = useState('password')
+  const [ newError, setNewError ] = useState('')
 
   console.log(noUser)
 
   const loginEmail = async (e) => {
     e.preventDefault();
-    if(email=== null || password === null){
-      console.log('nombre y contraseña obligatorios');
-      return;
+    if(email === null && password === null ){
+      let campoUsuario = document.querySelector('.campo-usuario');
+      campoUsuario.classList.remove('campo-usuario');
+      campoUsuario.classList.add('error');
+
+      let campoContraseña = document.querySelector('.campo-contraseña');
+      campoContraseña.classList.remove('campo-contraseña');
+      campoContraseña.classList.add('error');
+      return
+    } else if(email === null ) {      
+      let campoUsuario = document.querySelector('.campo-usuario');
+      campoUsuario.classList.remove('campo-usuario');
+      campoUsuario.classList.add('error');
+      return
+    } else if (password === null){
+      let campoUsuario = document.querySelector('.campo-contraseña');
+      campoUsuario.classList.remove('campo-contraseña');
+      campoUsuario.classList.add('error');
+      return
     }
     const userAccount = {
       email,
@@ -22,10 +39,16 @@ const LoginEmail = ({setInitApp, setLoginWithEmail, setLogin, noUser}) => {
     }
     try {
       const result = await loginEmailAnPassword(userAccount);
-      const user =  result.usuario
-    console.log('Usuario : ',user)
-    } catch (error) {
-      
+      if(!result.ok){
+        throw new Error('Usuario no encontrado,' + result.message);
+        let  errorCode = result.message
+        setNewError(errorCode);
+      }
+      const user =  result.user     
+    } catch (error) {      
+      const campoNoUsuario = document.querySelector('.campoNoUser');
+      campoNoUsuario.classList.remove('campoNoUser');
+      campoNoUsuario.classList.add('error');
     }
     
     //setLoginWithEmail(false);
@@ -95,6 +118,7 @@ const loginEmail = async (e) => {
           </svg>
         </button>
         <input type="email" name="email" id="email" placeholder='Ingrese un correo' onChange={(e) => {setEmail(e.target.value)}}/>
+        <p className="campo-usuario">*Campo Obligatorio</p>
         <span className="contaner-buttons">
           <input type={visibilityPassword} name="password" id="password" placeholder='Ingrese una contraseña'onChange={(e) => {setPassWord(e.target.value)}}/>
             <button type="button" className="visibility" onClick={visibilityTextPassword}>
@@ -115,8 +139,10 @@ const loginEmail = async (e) => {
             }
             </button>
         </span>
+        <p className="campo-contraseña">*Campo Obligatorio</p>
         <input type="submit" value="Entrar"/>
       { noUser ? <p style={{color:'red', textAlign:'center', fontSize:'14px'}}>Usuario o correo no existente</p> : ''}
+      <p className="campoNoUser">Datos incorrectos o el usuario no existe.</p>
       </form>
     </div>
   )

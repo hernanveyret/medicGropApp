@@ -75,3 +75,13 @@
   border: none;
   background: none;
 }
+
+.error {
+  display: flex;
+  color: red;
+  font-size: 14px;
+}
+
+.campo-usuario, .campo-contraseña, .campoNoUser {
+  display: none;
+}

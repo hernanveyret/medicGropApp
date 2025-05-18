@@ -9,8 +9,24 @@ const CreateAccount = ({createEmail, setInitApp, setCreateAccount}) => {
 
   const getData = (e) => {
   e.preventDefault();
-    if(email === null || password === null ) {
-      console.log('email y password obligatorios');
+    if(email === null && password === null ){
+      let campoUsuario = document.querySelector('.campo-usuario');
+      campoUsuario.classList.remove('campo-usuario');
+      campoUsuario.classList.add('error');
+
+      let campoContraseña = document.querySelector('.campo-contraseña');
+      campoContraseña.classList.remove('campo-contraseña');
+      campoContraseña.classList.add('error');
+      return
+    } else if(email === null ) {      
+      let campoUsuario = document.querySelector('.campo-usuario');
+      campoUsuario.classList.remove('campo-usuario');
+      campoUsuario.classList.add('error');
+      return
+    } else if (password === null){
+      let campoUsuario = document.querySelector('.campo-contraseña');
+      campoUsuario.classList.remove('campo-contraseña');
+      campoUsuario.classList.add('error');
       return
     }
   const dateNewUser = {
@@ -49,6 +65,7 @@ const CreateAccount = ({createEmail, setInitApp, setCreateAccount}) => {
           </svg>
         </button>
         <input type="email" name="email" id="email" placeholder='Ingrese un correo' onChange={(e) => {setEmail(e.target.value)}}/>
+        <p className="campo-usuario">*Campo Obligatorio</p>
         <span className="contaner-buttons">
           <input type={visibilityPassword} name="password" id="password" placeholder='Ingrese una contraseña'onChange={(e) => {setPassWord(e.target.value)}}/>
             <button type="button" className="visibility" onClick={visibilityTextPassword} title='Ver contraseña'>
@@ -69,6 +86,7 @@ const CreateAccount = ({createEmail, setInitApp, setCreateAccount}) => {
             }
             </button>
         </span>
+        <p className="campo-contraseña">*Campo Obligatorio</p>
         <input type="submit" value="Crear" title='Crear cuenta'/>
       </form>
     </div>

@@ -22,8 +22,7 @@ const provider = new GoogleAuthProvider();
       const user = userLogin.user
       return { ok: true, usuario: user };
     } catch (error) {
-        return { ok: false, usuario:user};
-      console.log('No se pudo ingresar a la cuenta. ', error.code);
+        return { ok: false, message:error.code};
     }
   }
 
@@ -34,8 +33,7 @@ const provider = new GoogleAuthProvider();
     const user = result.user;
     console.log('Usuario logeado: ', user);
     return user;
-  } catch (error) {
-    
+  } catch (error) {    
     console.log('Error al iniciar session: ', error)
   }
  };
@@ -67,7 +65,7 @@ export const cambioDeToken  = async (idPaciente, nuevoToken) => {
     await updateDoc(docRef, {
       token: nuevoToken
     })
-    console.log("Se modifico el numero de token con exito.");
+    //console.log("Se modifico el numero de token con exito.");
   } catch (error) {
     console.error("No se pudo modificar el token", error);
   }
