@@ -23,10 +23,14 @@ main {
   background-color: #01a895;
   box-shadow: 2px 2px 4px black;
   z-index: 1001;
+  transition: left 0.3s ease-in-out;
+  
+}
+ul li {
 }
 .menu-bar ul {
-  margin-left: 20px;
-  list-style: none;
+    list-style: none;
+  
 }
 .nav-bar-btn {
   position: relative;
@@ -35,8 +39,17 @@ main {
   align-items: center;
 }
 .btn-menu-bar {
+  color: black;
   background: none;
   border: none;
+  padding: .5rem;
+  width: 100%;
+}
+.btn-menu-bar:hover {
+  background-color: #00695c;
+  color: white;
+  font-weight: 100;
+  text-shadow: 2px 2px 4px black;
 }
 .btn-salir-menu {
   border: none;
@@ -165,11 +178,11 @@ footer {
 }
 
 .enter {
-  position:absolute;
-  left: 0;
-  transition: .2s ease-in-out;
+  left: 0; 
 }
-
+.menu-bar.leave {
+  left: -40%;
+}
 /* monitor */
 @media screen and ( min-width: 37em) {
   .container-dni {
@@ -177,6 +190,9 @@ footer {
   }
   .container-info {
     width: 50%;
+  }
+  .menu-bar {
+    width: 15%;
   }
 }
 

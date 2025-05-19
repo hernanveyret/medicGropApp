@@ -15,8 +15,8 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
   const [ token, setToken ] = useState(null);
   const [ turnos, setTurnos ] = useState(null);
   const [ isTurnos, setIsTurnos ] = useState(false);
-  
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hover, setHover] = useState(false);
 
   // Genera un nuevo token
@@ -192,18 +192,18 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
     )
   }
  
-  const openMenu = () => {
-    const menu = document.querySelector('.menu-bar');
-    menu.classList.add('enter');
-  }
-  const closeMenu = () => {
-    const menu = document.querySelector('.menu-bar');
-    menu.classList.remove('enter');
-    
-  }
+const openMenu = () => {
+  setIsMenuOpen(true);
+};
+
+const closeMenu = () => {
+  setIsMenuOpen(false);
+};
+
   return (
     <section className="container-main">
-      <nav className="menu-bar">
+      <nav className={`menu-bar ${isMenuOpen ? 'enter' : 'leave'}`}>
+
         <section className="nav-bar-btn">
           <button className="btn-salir-menu" onClick={closeMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" 
@@ -217,6 +217,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
         </section>
         <ul>
           <li><button className="btn-menu-bar">Eliminar cuanta</button></li>
+          <li><button className="btn-menu-bar"> Especialidades</button></li>
         </ul>
       </nav>
       < header className="header-main">
