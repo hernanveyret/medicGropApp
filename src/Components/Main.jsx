@@ -191,13 +191,38 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
       </div>
     )
   }
-
+ 
+  const openMenu = () => {
+    const menu = document.querySelector('.menu-bar');
+    menu.classList.add('enter');
+  }
+  const closeMenu = () => {
+    const menu = document.querySelector('.menu-bar');
+    menu.classList.remove('enter');
+    
+  }
   return (
     <section className="container-main">
+      <nav className="menu-bar">
+        <section className="nav-bar-btn">
+          <button className="btn-salir-menu" onClick={closeMenu}>
+            <svg xmlns="http://www.w3.org/2000/svg" 
+            height="24px" 
+            viewBox="0 -960 960 960" 
+            width="24px" 
+            fill="#000000">
+              <path d="M257.85-231.38 232-257.85 453.54-480 232-702.15l25.85-26.47L480-506.46l222.15-222.16L728-702.15 506.46-480 728-257.85l-25.85 26.47L480-453.54 257.85-231.38Z"/>
+            </svg>
+          </button>
+        </section>
+        <ul>
+          <li><button className="btn-menu-bar">Eliminar cuanta</button></li>
+        </ul>
+      </nav>
       < header className="header-main">
         <h1>{ user ? `¡Hola, ${user.nombre}!` : '¡Hola! '}</h1>
         <button onClick={closeSesion} className="btn-salir">Salir</button>
-        <button className="btn-menu">
+        <button className="btn-menu" onClick={openMenu}>
           <svg xmlns="http://www.w3.org/2000/svg" 
           height="24px" 
           viewBox="0 -960 960 960" 
