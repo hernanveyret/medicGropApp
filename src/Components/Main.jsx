@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Loader from './Loader.jsx';
-import { closeSesion, getData, cambioDeToken, cancelTurno } from '../firebase/auth.js';
+import { closeSesion, getData, cambioDeToken, cancelTurno,searchSpecialties } from '../firebase/auth.js';
 import './main.css';
 import './showTurnos.css'
+import { serverTimestamp } from 'firebase/firestore';
 const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
 
   //console.log(myUser)
@@ -15,6 +16,9 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
   const [ token, setToken ] = useState(null);
   const [ turnos, setTurnos ] = useState(null);
   const [ isTurnos, setIsTurnos ] = useState(false);
+  const [ medicos, setMedicos ] = useState(null)
+  const [ especialidades, setEspecialidades ] = useState(null);
+  const [ open, setOpen ] = useState(false)
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hover, setHover] = useState(false);
@@ -39,6 +43,8 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData();
+      const getDoctors = await searchSpecialties(); // descaraga la los medicos.
+      setMedicos(getDoctors)
       setDataBase(data)
       setIsLoader(true)
     };  
@@ -53,7 +59,20 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
       setUser(null);
       //console.log('no hay dni guardado')
     }
-  }, [dataBase, dni]);  
+  }, [dataBase, dni]);
+
+  // Crea lista de especialidaades
+  useEffect(() => {
+    if (medicos && medicos.length > 0) {
+      const filtro = [...new Set(medicos.map(e => e.especialidad))].sort();
+      setEspecialidades(filtro);
+    }
+  }, [medicos]);
+
+
+  useEffect(() => {
+    console.log(especialidades)
+  },[especialidades])
 
   // CUando vuelve a cargar la pagina, si hay un id de un paciente valido genera un nuevo token.
   useEffect(() => {
@@ -89,8 +108,6 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
       setTurnos(user.turnos);
     }
   },[user])
-
- 
 
   // Si no hay un dni valido, pide que se ingrese uno para ubicar al usuario.
   const ShowInput = () => {
@@ -200,6 +217,12 @@ const closeMenu = () => {
   setIsMenuOpen(false);
 };
 
+const findEspecialitis = async () => {
+const menu = document.querySelector('.esp-med');
+  menu.classList.toggle('closed')
+  menu.classList.toggle('open')  
+  setOpen(!open)
+}
   return (
     <section className="container-main">
       <nav className={`menu-bar ${isMenuOpen ? 'enter' : 'leave'}`}>
@@ -217,7 +240,37 @@ const closeMenu = () => {
         </section>
         <ul>
           <li><button className="btn-menu-bar">Eliminar cuanta</button></li>
-          <li><button className="btn-menu-bar"> Especialidades</button></li>
+          <li><button className="btn-menu-bar" onClick={findEspecialitis}>Especialidades
+
+            {
+              open ? 
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                  height="24px" 
+                  viewBox="0 -960 960 960" 
+                  width="24px" 
+                    fill="#000000"><path d="M256-454.81 230.81-480 480-729.58 729.58-480 704-454.81l-224-223-224 223Z"/>
+                </svg>
+                :
+                  <svg xmlns="http://www.w3.org/2000/svg" 
+                    height="24px" 
+                    viewBox="0 -960 960 960" 
+                    width="24px" 
+                    fill="#000000">
+                  <path d="M480-374.77 271.38-583.38l26.47-25.85L480-427.08l182.15-182.15 26.47 25.85L480-374.77Z"/>
+                </svg>
+            }
+            
+            </button></li>
+            <div className="esp-med">
+              <ul>
+                { 
+                especialidades &&
+                  especialidades.map(e => (
+                    <li><button className='btn-menu-bar'>{e[0].toUpperCase() + e.slice(1)}</button></li>
+                  ))
+                }
+              </ul>
+            </div>
         </ul>
       </nav>
       < header className="header-main">
@@ -246,3 +299,24 @@ const closeMenu = () => {
   )
 };
 export default Main;
+
+/*
+  flecha arriba
+<svg xmlns="http://www.w3.org/2000/svg" 
+height="24px" 
+viewBox="0 -960 960 960" 
+width="24px" 
+  fill="#000000"><path d="M256-454.81 230.81-480 480-729.58 729.58-480 704-454.81l-224-223-224 223Z"/>
+</svg>
+
+------------------------------------------------
+
+  fecla abajo
+<svg xmlns="http://www.w3.org/2000/svg" 
+height="24px" 
+viewBox="0 -960 960 960" 
+width="24px" 
+fill="#000000">
+  <path d="M480-374.77 271.38-583.38l26.47-25.85L480-427.08l182.15-182.15 26.47 25.85L480-374.77Z"/>
+</svg>
+*/

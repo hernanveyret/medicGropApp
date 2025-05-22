@@ -84,6 +84,22 @@ export const cancelTurno = async (idPaciente, turnos) => {
       console.error("Error al agregar eliminar ❌", error);
     }
 }
+
+// busca nombres de especialidades medicas.
+export const searchSpecialties = async () => {
+  try {
+    const data = await getDocs(collection(db, 'medicos'));
+    const medicos = data.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    return medicos;
+  } catch (error) {
+    console.log('Error al buscar usuario:', error);
+    return [];
+  }
+}
+
  /*
 onAuthStateChanged(auth, (user) => {
   if(user) {
