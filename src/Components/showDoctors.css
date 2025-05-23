@@ -1,3 +1,13 @@
+.container-docs {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* mejor para items de altura variable */
+  width: 100%;
+  max-width: 1200px; /* limita el ancho en pantallas grandes */
+  margin: 0 auto; /* centrado */
+}
 .card-doctor {
   width: 40%;
   box-shadow: 1px 1px 4px grey;
@@ -19,4 +29,12 @@
   height: 100px;
    text-align: left;
   position:relative;
+}
+@media screen and ( min-width: 1024px) {
+
+.container-docs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }

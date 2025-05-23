@@ -301,17 +301,14 @@ const findDoctor = (e) => {
         { !dni && <ShowInput /> }
         { isTurnos && <ShowTurnos /> }
         { isInfo ?  <ShowInfo /> : ''  }
-        <div className="container-docs">
           
-          { isShowDoctors &&
-          filterDocs.map(doc => (
-            <ShowDoctors
-              key={doc.id}
-              doc={doc}
-            />
-          ))
+          {         
+          isShowDoctors &&          
+            <ShowDoctors              
+              filterDocs={filterDocs}
+            />     
+        
         }
-        </div>
         
         
       </main>
