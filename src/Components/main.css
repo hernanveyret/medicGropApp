@@ -201,6 +201,18 @@ footer {
 .menu-bar.leave {
   left: -40%;
 }
+
+.container-docs {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* mejor para items de altura variable */
+  width: 100%;
+  max-width: 1200px; /* limita el ancho en pantallas grandes */
+  margin: 0 auto; /* centrado */
+}
+
 /* monitor */
 @media screen and ( min-width: 37em) {
   .container-dni {
@@ -210,11 +222,7 @@ footer {
   .menu-bar {
     width: 15%;
   }
-  /*--------*/
 
-   
-
-  /*--------*/
 }
 
 .hidden {

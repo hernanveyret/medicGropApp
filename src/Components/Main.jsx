@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loader from './Loader.jsx';
+import ShowDoctors from './ShowDoctors.jsx';
 import { closeSesion, getData, cambioDeToken, cancelTurno,searchSpecialties } from '../firebase/auth.js';
 import './main.css';
 import './showTurnos.css'
@@ -19,6 +20,8 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
   const [ medicos, setMedicos ] = useState(null)
   const [ especialidades, setEspecialidades ] = useState(null);
   const [ open, setOpen ] = useState(false)
+  const [ isShowDoctors, setIsShowDoctors ] = useState(false);
+  const [ filterDocs, setFilterDocs ] = useState(null)
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hover, setHover] = useState(false);
@@ -68,11 +71,6 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
       setEspecialidades(filtro);
     }
   }, [medicos]);
-
-
-  useEffect(() => {
-    console.log(especialidades)
-  },[especialidades])
 
   // CUando vuelve a cargar la pagina, si hay un id de un paciente valido genera un nuevo token.
   useEffect(() => {
@@ -223,6 +221,18 @@ const menu = document.querySelector('.esp-med');
   menu.classList.toggle('open')  
   setOpen(!open)
 }
+
+const findDoctor = (e) => {
+  const data = e.target.textContent.toLowerCase()
+  console.log(data)
+  const filter = medicos.filter(e => e.especialidad == data )
+  setFilterDocs(filter)
+  console.log(filter);
+  setIsMenuOpen(false);
+  setIsInfo(false);
+  setIsShowDoctors(true);
+}
+
   return (
     <section className="container-main">
       <nav className={`menu-bar ${isMenuOpen ? 'enter' : 'leave'}`}>
@@ -266,7 +276,7 @@ const menu = document.querySelector('.esp-med');
                 { 
                 especialidades &&
                   especialidades.map(e => (
-                    <li><button className='btn-menu-bar'>{e[0].toUpperCase() + e.slice(1)}</button></li>
+                    <li><button className='btn-menu-bar' onClick={findDoctor}>{e[0].toUpperCase() + e.slice(1)}</button></li>
                   ))
                 }
               </ul>
@@ -290,7 +300,20 @@ const menu = document.querySelector('.esp-med');
         { isLoader && <Loader /> }        
         { !dni && <ShowInput /> }
         { isTurnos && <ShowTurnos /> }
-        { isInfo ?  <ShowInfo /> : ''  } 
+        { isInfo ?  <ShowInfo /> : ''  }
+        <div className="container-docs">
+          
+          { isShowDoctors &&
+          filterDocs.map(doc => (
+            <ShowDoctors
+              key={doc.id}
+              doc={doc}
+            />
+          ))
+        }
+        </div>
+        
+        
       </main>
       <footer>
         <p>MedicGroup App - 2025</p>
