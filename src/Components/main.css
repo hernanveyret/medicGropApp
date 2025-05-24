@@ -23,8 +23,7 @@ main {
   background-color: #01a895;
   box-shadow: 2px 2px 4px black;
   z-index: 1001;
-  transition: left 0.3s ease-in-out;
-  
+  transition: left 0.3s ease-in-out;  
 }
 
 .menu-bar ul {
@@ -36,6 +35,16 @@ main {
   height: 2rem;
   display: flex;
   align-items: center;
+}
+.nav-btn-salir {
+  position: relative;
+  width: 100%;
+  height: 2rem;
+}
+.btn-salir-turnos {
+  position: absolute;
+  right: 1rem;
+  padding: .2rem;
 }
 .btn-menu-bar {
   color: black;
@@ -69,19 +78,18 @@ main {
  justify-content: center;
  align-items: center; 
  box-shadow: 0 0 4px black;
+ position: relative;
 }
 .btn-salir {
-  padding: 5px;
-  border: none;
-  position: fixed;
+  position: absolute;
   right: 1rem;
-  transition: .2s ease-in-out;
-}
-.btn-salir:hover {
-  background-color: #00695c;
+  padding: .5rem;
+  border-radius:.2rem;
+  border: none;
+  background-color: rgba(128, 128, 128, 0.774);
   color: white;
-  border: 1px solid white;
 }
+
 .btn-menu {
   padding: 5px;
   border: none;

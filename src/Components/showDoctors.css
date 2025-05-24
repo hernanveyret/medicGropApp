@@ -1,15 +1,15 @@
-.container-docs {
-  
+.container-docs {  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; /* mejor para items de altura variable */
-  width: 100%;
-  max-width: 1200px; /* limita el ancho en pantallas grandes */
+  width: 100%;  
   margin: 0 auto; /* centrado */
+  gap: .5rem;
 }
 .card-doctor {
-  width: 40%;
+  width: 90%;
+  height: 200px;
   box-shadow: 1px 1px 4px grey;
   border-radius: 10px;
   display: flex;
@@ -18,11 +18,33 @@
   background-color: white;
   margin: .5rem;
 }
+.titulo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: .5rem;
+}
+.titulo button {
+  position: absolute;
+  top: .2rem;
+  right: 1rem;
+  padding: .5rem;
+  border-radius:.2rem;
+  border: none;
+  background-color: rgba(128, 128, 128, 0.774);
+  color: white;
+}
 .foto-ferfil {
   width: 40%;
+  overflow: hidden;
 }
 .foto-ferfil img {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 0 50%;
 }
 .info-doctor {
   width: 60%;
@@ -30,11 +52,31 @@
    text-align: left;
   position:relative;
 }
-@media screen and ( min-width: 1024px) {
-
-.container-docs {
+.card-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+
+/* monitor */
+@media screen and ( min-width: 1024px) {
+  .container-docs {
+    width: 100%;
+  }
+  .card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.card-doctor {
+  width: 40%;
 }
 }

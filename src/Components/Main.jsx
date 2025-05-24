@@ -139,6 +139,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
           <p>Nº socio: {user && user.credencial}</p>
           <p>Token: {user && token}</p>
           <button className="btn" onClick={generarToken}>Nuevo token</button>
+          <button className="btn">Generar QR</button>
           <button className="btn" onClick={() => {
             setIsTurnos(true);
           }}>Ver turnos medicos</button>
@@ -148,8 +149,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
   };
   
   // renderiza los turnos del paciente.
-  const ShowTurnos = () => {
-    
+  const ShowTurnos = () => {    
     useEffect(() => {
       setIsInfo(false)
     },[]);
@@ -164,26 +164,26 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
  
     return (
       <div className='container-turnos'>
-        <h4>Tus turnos</h4>
-        <nav className="nav-btn-salir">
-          <button
-            className="btn salir"
+        <div className="titulo">
+          <h4>Tus turnos</h4>
+           <button
+            
             onClick={() => {setIsTurnos(false); setHover(false); setIsInfo(true)}}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
+            
           >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
             viewBox="0 -960 960 960"
             width="24px"
-            fill={hover ? 'white' : 'black'}
+            fill='white'
             style={{ transform: hover ? 'scale(1.2)' : 'scale(1)', transition: '0.3s' }}
           >
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
           </button>
-        </nav>
+        </div>
+       
         <div className="container-info-turnos">
         { turnos && 
            turnos.length > 0 ?
@@ -231,6 +231,12 @@ const findDoctor = (e) => {
   setIsMenuOpen(false);
   setIsInfo(false);
   setIsShowDoctors(true);
+  setIsTurnos(false);
+
+  const menu = document.querySelector('.esp-med');
+  menu.classList.toggle('closed')
+  menu.classList.toggle('open')
+  setOpen(!open)
 }
 
   return (
@@ -275,8 +281,8 @@ const findDoctor = (e) => {
               <ul>
                 { 
                 especialidades &&
-                  especialidades.map(e => (
-                    <li><button className='btn-menu-bar' onClick={findDoctor}>{e[0].toUpperCase() + e.slice(1)}</button></li>
+                  especialidades.map((e, i) => (
+                    <li key={i}><button className='btn-menu-bar' onClick={findDoctor}>{e[0].toUpperCase() + e.slice(1)}</button></li>
                   ))
                 }
               </ul>
@@ -306,6 +312,8 @@ const findDoctor = (e) => {
           isShowDoctors &&          
             <ShowDoctors              
               filterDocs={filterDocs}
+              setIsShowDoctors={setIsShowDoctors}
+              setIsInfo={setIsInfo}
             />     
         
         }
