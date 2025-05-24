@@ -3,7 +3,8 @@
   flex-direction: column;
   min-height: 100vh;
   /*background-color: #f4f9f4 ;*/
-  background: linear-gradient(#016459 ,#01a895 );
+  /*background: linear-gradient(#016459 ,#01a895 );*/
+  background: linear-gradient(#036988 ,#07b0ff );
 }
 main {
   max-width: 100%;
@@ -20,14 +21,16 @@ main {
   position: fixed;
   top: 0;
   left: -40%;
-  background-color: #01a895;
+  background-color: #07b0ff;
   box-shadow: 2px 2px 4px black;
   z-index: 1001;
-  transition: left 0.3s ease-in-out;  
+  transition: left 0.3s ease-in-out;
+  color: white;
 }
 
 .menu-bar ul {
-    list-style: none;    
+    list-style: none;
+    color: white;
 }
 
 .nav-bar-btn {
@@ -35,11 +38,13 @@ main {
   height: 2rem;
   display: flex;
   align-items: center;
+  color: white;
 }
 .nav-btn-salir {
   position: relative;
   width: 100%;
   height: 2rem;
+  color: white;
 }
 .btn-salir-turnos {
   position: absolute;
@@ -47,7 +52,7 @@ main {
   padding: .2rem;
 }
 .btn-menu-bar {
-  color: black;
+  color: white;
   background: none;
   border: none;
   padding: .5rem;
@@ -56,9 +61,10 @@ main {
   justify-content: flex-start;
   align-items: center;
   gap:.5rem;
+
 }
 .btn-menu-bar:hover {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
   font-weight: 100;
   text-shadow: 2px 2px 4px black;
@@ -72,7 +78,7 @@ main {
 .header-main{
  width: 100%;
  height: 100px;
-  background-color: #00695c;
+  background-color: #036988;
  color: white;
  display: flex;
  justify-content: center;
@@ -132,7 +138,7 @@ main {
 }
 
 .container-dni input[type="submit"], .btn:hover  {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
 }
 .esp-med {
@@ -162,7 +168,7 @@ main {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #00695c;
+  border: 2px solid #036988;
   margin-bottom: 1rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -183,7 +189,7 @@ main {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 8px;
-  background-color: #00796b;
+  background-color: #036988;
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -192,13 +198,13 @@ main {
   max-width: 300px;
 }
 .btn:hover {
-  background-color: #004d40;
+  background-color: #07b0ff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /*--------------------------------------------------*/
 footer {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
   text-align: center;
 }

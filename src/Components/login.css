@@ -20,7 +20,7 @@
   position: relative;
 }
 .header-form {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
   position: fixed;
   top: 0;
@@ -40,7 +40,7 @@
   transition: .2s ease-in-out;
 }
 .container-buttons .btn-login:hover {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
 }
 button {

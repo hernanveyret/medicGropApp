@@ -5,7 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#016459 ,#01a895 );
+  /*background: linear-gradient(#016459 ,#01a895 );*/
+  background: linear-gradient(#036988 ,#07b0ff );
 }
 
 .container-buttons {
@@ -21,7 +22,7 @@
   gap: 1rem;
 }
 .header-form {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
   position: fixed;
   top: 0;
@@ -44,7 +45,7 @@
   font-size: 1rem;
 }
 .container-buttons button:hover {
-  background-color: #00695c;
+  background-color: #036988;
   color: white;
 }
 button {
