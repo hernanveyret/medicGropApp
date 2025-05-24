@@ -46,7 +46,7 @@
 .form-create-account input[type="email"]:focus,
 .form-create-account input[type="text"],
 .form-create-account input[type="password"]:focus {
-  border-color: #4CAF50;
+  border-color: #07b0ff;
   background-color: #fff;
   outline: none;
 }
@@ -63,7 +63,7 @@
 }
 
 .form-create-account input[type="submit"]:hover {
-  background-color: #00695c;
+  background-color: #07b0ff;
   color: white;
 }
 .contaner-buttons {

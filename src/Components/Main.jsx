@@ -141,6 +141,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
           <button className="btn" onClick={generarToken}>Nuevo token</button>
           <button className="btn">Generar QR</button>
           <button className="btn" onClick={() => {
+            setIsInfo(false);
             setIsTurnos(true);
           }}>Ver turnos medicos</button>
         </section>
