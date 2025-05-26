@@ -5,6 +5,7 @@ import { closeSesion, getData, cambioDeToken, cancelTurno,searchSpecialties } fr
 import './main.css';
 import './showTurnos.css'
 import { serverTimestamp } from 'firebase/firestore';
+import Qr from './Qr.jsx';
 const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
 
   //console.log(myUser)
@@ -22,6 +23,8 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
   const [ open, setOpen ] = useState(false)
   const [ isShowDoctors, setIsShowDoctors ] = useState(false);
   const [ filterDocs, setFilterDocs ] = useState(null)
+  const [ isQr, setIsQr ] = useState(false);
+  const [ dataQr, setDataQr ] = useState(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hover, setHover] = useState(false);
@@ -120,6 +123,20 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
         </div>
     )
   };
+
+  const generateQr = () => {
+    const data = {
+      apellidoNombre: `${user.apellido}, ${user.nombre}`,
+      contrato:user.credencial,
+      plan:user.plan,
+      otp:token
+    };
+    setDataQr(data);
+    setIsQr(true)
+  };
+  useEffect(() => {
+    dataQr && console.log(dataQr)
+  },[dataQr])
   
   // Renderiza la informacion del usuario.
   const ShowInfo = () => {
@@ -139,7 +156,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
           <p>Nº socio: {user && user.credencial}</p>
           <p>Token: {user && token}</p>
           <button className="btn" onClick={generarToken}>Nuevo token</button>
-          <button className="btn">Generar QR</button>
+          <button className="btn" onClick={generateQr}>Generar QR</button>
           <button className="btn" onClick={() => {
             setIsInfo(false);
             setIsTurnos(true);
@@ -315,9 +332,15 @@ const findDoctor = (e) => {
               filterDocs={filterDocs}
               setIsShowDoctors={setIsShowDoctors}
               setIsInfo={setIsInfo}
-            />     
-        
-        }
+            />        
+          }
+          {
+            isQr &&
+              <Qr 
+                dataQr={dataQr}
+                setIsQr={setIsQr}
+              />
+          }
         
         
       </main>
