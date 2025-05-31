@@ -2,55 +2,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* mejor para items de altura variable */
+  align-items: center;
   width: 100%;  
-  margin: 0 auto; /* centrado */
+  margin: 0 auto;
   gap: .5rem;
 }
+
 .card-doctor {
   width: 90%;
-  height: 200px;
-  box-shadow: 1px 1px 4px grey;
-  border-radius: 10px;
   display: flex;
   gap: 10px;
   padding: 10px;
   background-color: white;
   margin: .5rem;
+  border-radius: 10px;
+  align-items: stretch; /* estira hijos para igualar altura */
 }
-.titulo {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: .5rem;
-}
-.titulo button {
-  position: absolute;
-  top: .2rem;
-  right: 1rem;
-  padding: .5rem;
-  border-radius:.2rem;
-  border: none;
-  background-color: rgba(128, 128, 128, 0.774);
-  color: white;
-}
-.foto-ferfil {
-  width: 40%;
-  overflow: hidden;
-}
-.foto-ferfil img {
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: 0 50%;
-}
-.info-doctor {
-  width: 60%;
-  height: 100px;
-   text-align: left;
-  position:relative;
+.card-doctor:hover {
+  box-shadow: 0 2px 6px black;
 }
 .card-container {
   display: flex;
@@ -61,22 +30,68 @@
   height: auto;
 }
 
+.titulo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: .5rem;
+}
 
-/* monitor */
-@media screen and ( min-width: 1024px) {
+.titulo button {
+  position: absolute;
+  top: .2rem;
+  right: 1rem;
+  padding: .5rem;
+  border-radius: .2rem;
+  border: none;
+  background-color: rgba(128, 128, 128, 0.774);
+  color: white;
+}
+
+.foto-ferfil {
+  width: 40%;
+  height: 100%; /* se adapta al alto de la card */
+  overflow: hidden;
+}
+
+
+.foto-ferfil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+ 
+}
+
+.info-doctor {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+
+/* Estilos para pantallas grandes (PC) */
+@media screen and (min-width: 1024px) {
   .container-docs {
     width: 100%;
   }
-  .card-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-}
 
-.card-doctor {
-  width: 40%;
-}
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .card-doctor {
+    width: 40%;
+  }
+  .card-doctor:hover {
+    box-shadow: 0 2px 6px black;
+  }
 }

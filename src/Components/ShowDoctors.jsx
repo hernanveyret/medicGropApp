@@ -3,6 +3,7 @@ import './showDoctors.css';
 
 const ShowDoctors = ({filterDocs, setIsShowDoctors, setIsInfo}) => {
   console.log(filterDocs)
+  
   return (
     <div className="container-docs">
       <div className="titulo">
