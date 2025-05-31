@@ -155,7 +155,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
           <p>{user && user.apellido}, {user && user.nombre}</p>
           <p>DNI: {user && user.dni}</p>
           <p>Nº socio: {user && user.credencial}</p>
-          <span style={{display:'flex', justifyContent:'center', alignItems:'center', gap: '1rem'}}><p>Token: {user && token}</p> - <p style={{color:'blue', fontSize:'14px'}}>{<Cronometro generarToken={generarToken} />}</p></span>
+          <div style={{display:'flex', justifyContent:'center', alignItems:'center', gap: '1rem'}}><div>Token: {user && token}</div> - <div style={{color:'blue', fontSize:'14px'}}>{<Cronometro generarToken={generarToken} />}</div></div>
           <button className="btn" onClick={generarToken}>Nuevo token</button>
           <button className="btn" onClick={generateQr}>Generar QR</button>
           <button className="btn" onClick={() => {
