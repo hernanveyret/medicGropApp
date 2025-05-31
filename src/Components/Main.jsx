@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Loader from './Loader.jsx';
 import ShowDoctors from './ShowDoctors.jsx';
+import Cronometro from './Cronometro.jsx';
 import { closeSesion, getData, cambioDeToken, cancelTurno,searchSpecialties } from '../firebase/auth.js';
 import './main.css';
 import './showTurnos.css'
@@ -154,7 +155,7 @@ const Main = ({myUser, dni, setDni, isInfo, setIsInfo}) => {
           <p>{user && user.apellido}, {user && user.nombre}</p>
           <p>DNI: {user && user.dni}</p>
           <p>Nº socio: {user && user.credencial}</p>
-          <p>Token: {user && token}</p>
+          <span style={{display:'flex', justifyContent:'center', alignItems:'center', gap: '1rem'}}><p>Token: {user && token}</p> - <p style={{color:'blue', fontSize:'14px'}}>{<Cronometro generarToken={generarToken} />}</p></span>
           <button className="btn" onClick={generarToken}>Nuevo token</button>
           <button className="btn" onClick={generateQr}>Generar QR</button>
           <button className="btn" onClick={() => {
